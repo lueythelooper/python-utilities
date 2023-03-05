@@ -34,7 +34,6 @@ def GetImagesFromImageSearchReturn(image_search_return_objects, queue_image):
             img_data = requests.get(img_link, verify=False, timeout=4).content
             mat = cv2.imdecode(np.asarray(bytearray(img_data), dtype=np.uint8), 1)
             if mat is not None:
-                print (queue_image.qsize())
                 queue_image.put(mat)
 
         except Exception as e:
